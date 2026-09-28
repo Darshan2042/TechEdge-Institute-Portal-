@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard - TechEdge</title>
+
+    <link
+            rel="stylesheet"
+            href="css/style.css"
+    >
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="container nav-content">
+
+        <a href="index.html" class="logo">
+            TechEdge
+        </a>
+
+        <nav>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="courses.html">
+                Courses
+            </a>
+
+            <a href="my-enrollments.html">
+                My Enrollments
+            </a>
+
+            <a href="placements.html">
+                Placements
+            </a>
+
+            <button
+                    class="btn btn-outline"
+                    onclick="logout()"
+            >
+                Logout
+            </button>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="section">
+
+        <div class="container">
+
+            <div
+                    id="loading"
+                    class="card"
+            >
+                Loading dashboard...
+            </div>
+
+
+            <div
+                    id="errorMessage"
+                    class="error-message"
+                    style="display:none"
+            ></div>
+
+
+            <div
+                    id="dashboard"
+                    style="display:none"
+            >
+
+                <div class="section-header">
+
+                <span class="badge">
+                    Student Dashboard
+                </span>
+
+                    <h1>
+                        Welcome,
+                        <span id="studentName"></span>
+                    </h1>
+
+                    <p>
+                        Manage your learning journey from here.
+                    </p>
+
+                </div>
+
+
+                <div class="card-grid">
+
+                    <div class="card">
+
+                        <h3>
+                            My Enrollments
+                        </h3>
+
+                        <p class="stat-value"
+                           id="enrollmentCount">
+                            0
+                        </p>
+
+                        <a
+                                href="my-enrollments.html"
+                                class="btn btn-primary"
+                        >
+                            View Enrollments
+                        </a>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <h3>
+                            Browse Courses
+                        </h3>
+
+                        <p>
+                            Explore available courses
+                            and batches.
+                        </p>
+
+                        <a
+                                href="courses.html"
+                                class="btn btn-primary"
+                        >
+                            Explore Courses
+                        </a>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <h3>
+                            Placements
+                        </h3>
+
+                        <p>
+                            View TechEdge placement
+                            achievements.
+                        </p>
+
+                        <a
+                                href="placements.html"
+                                class="btn btn-primary"
+                        >
+                            View Placements
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <section class="detail-section">
+
+                    <h2>
+                        Account Information
+                    </h2>
+
+                    <div class="card">
+
+                        <p>
+                            <strong>Name:</strong>
+                            <span id="accountName"></span>
+                        </p>
+
+                        <p>
+                            <strong>Email:</strong>
+                            <span id="accountEmail"></span>
+                        </p>
+
+                        <p>
+                            <strong>Phone:</strong>
+                            <span id="accountPhone"></span>
+                        </p>
+
+                        <p>
+                            <strong>Role:</strong>
+                            <span id="accountRole"></span>
+                        </p>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="container">
+
+        <p>
+            © 2026 TechEdge Institute.
+            All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

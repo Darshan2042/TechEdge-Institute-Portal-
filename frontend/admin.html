@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin Dashboard - TechEdge Institute</title>
+
+    <link
+            rel="stylesheet"
+            href="css/style.css"
+    >
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="container nav-content">
+
+        <a href="admin.html" class="logo">
+            TechEdge Admin
+        </a>
+
+        <nav>
+
+            <a href="admin.html">
+                Dashboard
+            </a>
+
+            <a href="admin-courses.html">
+                Courses
+            </a>
+
+            <a href="admin-enrollments.html">
+                Enrollments
+            </a>
+
+            <a href="admin-exams.html">
+                Exams
+            </a>
+
+            <a href="admin-feedback.html">
+                Feedback
+            </a>
+
+            <button
+                    type="button"
+                    class="btn btn-outline"
+                    onclick="logout()"
+            >
+                Logout
+            </button>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="section">
+
+        <div class="container">
+
+            <!-- PAGE HEADER -->
+
+            <div class="section-header">
+
+                <p>
+                    Administration
+                </p>
+
+                <h1>
+                    Admin Dashboard
+                </h1>
+
+                <p>
+                    Manage courses, batches, enrollments,
+                    exams, feedback and placements.
+                </p>
+
+            </div>
+
+
+            <!-- LOADING -->
+
+            <div
+                    id="loading"
+                    class="card text-center"
+            >
+
+                <p>
+                    Loading dashboard...
+                </p>
+
+            </div>
+
+
+            <!-- ERROR -->
+
+            <div
+                    id="errorMessage"
+                    class="error-message"
+                    style="display:none;"
+            >
+            </div>
+
+
+            <!-- DASHBOARD -->
+
+            <div
+                    id="dashboardContainer"
+                    style="display:none;"
+            >
+
+                <!-- STATISTICS -->
+
+                <div class="card-grid admin-stats">
+
+                    <div class="card">
+
+                        <h3>
+                            Courses
+                        </h3>
+
+                        <div
+                                id="courseCount"
+                                class="stat-value"
+                        >
+                            -
+                        </div>
+
+                        <p>
+                            Total courses
+                        </p>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <h3>
+                            Batches
+                        </h3>
+
+                        <div
+                                id="batchCount"
+                                class="stat-value"
+                        >
+                            -
+                        </div>
+
+                        <p>
+                            Total batches
+                        </p>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <h3>
+                            Enrollments
+                        </h3>
+
+                        <div
+                                id="enrollmentCount"
+                                class="stat-value"
+                        >
+                            -
+                        </div>
+
+                        <p>
+                            Total enrollments
+                        </p>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <h3>
+                            Pending Feedback
+                        </h3>
+
+                        <div
+                                id="feedbackCount"
+                                class="stat-value"
+                        >
+                            -
+                        </div>
+
+                        <p>
+                            Awaiting moderation
+                        </p>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <h3>
+                            Students Placed
+                        </h3>
+
+                        <div
+                                id="placedCount"
+                                class="stat-value"
+                        >
+                            -
+                        </div>
+
+                        <p>
+                            Total placed
+                        </p>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <h3>
+                            Hiring Partners
+                        </h3>
+
+                        <div
+                                id="hiringPartners"
+                                class="stat-value"
+                        >
+                            -
+                        </div>
+
+                        <p>
+                            Companies
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUICK ACTIONS -->
+
+                <div class="detail-section">
+
+                    <div class="section-header">
+
+                        <h2>
+                            Quick Actions
+                        </h2>
+
+                    </div>
+
+
+                    <div class="card-grid">
+
+                        <a
+                                href="admin-courses.html"
+                                class="card admin-action-card"
+                        >
+
+                            <h3>
+                                Manage Courses
+                            </h3>
+
+                            <p>
+                                Create and manage courses,
+                                batches and offers.
+                            </p>
+
+                        </a>
+
+
+                        <a
+                                href="admin-enrollments.html"
+                                class="card admin-action-card"
+                        >
+
+                            <h3>
+                                Manage Enrollments
+                            </h3>
+
+                            <p>
+                                Review applications,
+                                approve or reject students
+                                and manage enrollment status.
+                            </p>
+
+                        </a>
+
+
+                        <a
+                                href="admin-exams.html"
+                                class="card admin-action-card"
+                        >
+
+                            <h3>
+                                Manage Exams
+                            </h3>
+
+                            <p>
+                                Create exams and add
+                                questions with options.
+                            </p>
+
+                        </a>
+
+
+                        <a
+                                href="admin-feedback.html"
+                                class="card admin-action-card"
+                        >
+
+                            <h3>
+                                Feedback Moderation
+                            </h3>
+
+                            <p>
+                                Review pending student
+                                feedback and approve it.
+                            </p>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PLACEMENT STATISTICS -->
+
+                <div class="detail-section">
+
+                    <div class="section-header">
+
+                        <h2>
+                            Placement Overview
+                        </h2>
+
+                    </div>
+
+
+                    <div class="card-grid">
+
+                        <div class="card">
+
+                            <h3>
+                                Highest Package
+                            </h3>
+
+                            <div
+                                    id="highestPackage"
+                                    class="stat-value"
+                            >
+                                -
+                            </div>
+
+                            <p>
+                                LPA
+                            </p>
+
+                        </div>
+
+
+                        <div class="card">
+
+                            <h3>
+                                Average Package
+                            </h3>
+
+                            <div
+                                    id="averagePackage"
+                                    class="stat-value"
+                            >
+                                -
+                            </div>
+
+                            <p>
+                                LPA
+                            </p>
+
+                        </div>
+
+
+                        <div class="card">
+
+                            <h3>
+                                Placements This Year
+                            </h3>
+
+                            <div
+                                    id="placementsThisYear"
+                                    class="stat-value"
+                            >
+                                -
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="container text-center">
+
+        <p>
+            © 2026 TechEdge Institute.
+            All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- JAVASCRIPT -->
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/admin.js"></script>
+
+</body>
+
+</html>

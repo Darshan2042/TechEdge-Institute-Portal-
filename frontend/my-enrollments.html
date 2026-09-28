@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Enrollments - TechEdge</title>
+
+    <link
+            rel="stylesheet"
+            href="css/style.css"
+    >
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="container nav-content">
+
+        <a href="index.html" class="logo">
+            TechEdge
+        </a>
+
+        <nav>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="courses.html">
+                Courses
+            </a>
+
+            <a href="my-enrollments.html">
+                My Enrollments
+            </a>
+
+            <a href="placements.html">
+                Placements
+            </a>
+
+            <button
+                    class="btn btn-outline"
+                    onclick="logout()"
+            >
+                Logout
+            </button>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-header">
+
+            <span class="badge">
+                Student Area
+            </span>
+
+                <h1>
+                    My Enrollments
+                </h1>
+
+                <p>
+                    Track the courses you have enrolled in.
+                </p>
+
+            </div>
+
+
+            <div
+                    id="loading"
+                    class="card"
+            >
+                Loading enrollments...
+            </div>
+
+
+            <div
+                    id="errorMessage"
+                    class="error-message"
+                    style="display:none"
+            ></div>
+
+
+            <div
+                    id="enrollmentContainer"
+                    class="card-grid"
+            ></div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="container">
+
+        <p>
+            © 2026 TechEdge Institute.
+            All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/my-enrollments.js"></script>
+
+</body>
+
+</html>

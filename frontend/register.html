@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Register - TechEdge Institute</title>
+
+    <link
+            rel="stylesheet"
+            href="css/style.css"
+    >
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="container nav-content">
+
+        <a href="index.html" class="logo">
+            TechEdge
+        </a>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="courses.html">
+                Courses
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="login.html">
+                Login
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="auth-section">
+
+        <div class="auth-card">
+
+        <span class="badge">
+            Join TechEdge
+        </span>
+
+            <h1>
+                Create Account
+            </h1>
+
+            <p>
+                Create your student account to get started.
+            </p>
+
+
+            <div
+                    id="errorMessage"
+                    class="error-message"
+                    style="display:none"
+            ></div>
+
+
+            <div
+                    id="successMessage"
+                    class="success-message"
+                    style="display:none"
+            ></div>
+
+
+            <form id="registerForm">
+
+                <div class="form-group">
+
+                    <label for="fullName">
+                        Full Name
+                    </label>
+
+                    <input
+                            type="text"
+                            id="fullName"
+                            required
+                            placeholder="Enter your full name"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                            type="email"
+                            id="email"
+                            required
+                            placeholder="Enter your email"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone
+                    </label>
+
+                    <input
+                            type="text"
+                            id="phone"
+                            placeholder="Enter your phone"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                            type="password"
+                            id="password"
+                            required
+                            placeholder="Enter your password"
+                    >
+
+                </div>
+
+
+                <button
+                        type="submit"
+                        class="btn btn-primary full-width"
+                >
+                    Create Account
+                </button>
+
+            </form>
+
+
+            <p class="auth-footer">
+
+                Already have an account?
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/register.js"></script>
+
+</body>
+
+</html>

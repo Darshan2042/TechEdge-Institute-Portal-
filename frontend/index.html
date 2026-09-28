@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>TechEdge Institute</title>
+
+    <link
+            rel="stylesheet"
+            href="css/style.css"
+    >
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="container nav-content">
+
+        <a href="index.html" class="logo">
+            TechEdge
+        </a>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="courses.html">
+                Courses
+            </a>
+
+            <a href="offers.html">
+                Offers
+            </a>
+
+            <a href="placements.html">
+                Placements
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="login.html" id="loginLink">
+                Login
+            </a>
+
+            <button
+                    id="logoutBtn"
+                    class="btn btn-outline"
+                    style="display:none"
+                    onclick="logout()"
+            >
+                Logout
+            </button>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="hero">
+
+        <div class="container hero-content">
+
+            <div>
+
+                <span class="badge">
+                    Learn. Build. Get Placed.
+                </span>
+
+                <h1>
+                    Build Your Career
+                    With TechEdge
+                </h1>
+
+                <p>
+                    Industry-focused courses, practical
+                    training and placement opportunities
+                    designed to help students build
+                    successful careers.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a
+                            href="courses.html"
+                            class="btn btn-primary"
+                    >
+                        Explore Courses
+                    </a>
+
+                    <a
+                            href="register.html"
+                            class="btn btn-secondary"
+                    >
+                        Get Started
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <span class="badge">
+                    Why TechEdge?
+                </span>
+
+                <h2>
+                    Learn Skills That Matter
+                </h2>
+
+                <p>
+                    Practical education designed around
+                    real-world skills and career outcomes.
+                </p>
+
+            </div>
+
+
+            <div class="card-grid">
+
+                <div class="card">
+
+                    <h3>
+                        Industry Skills
+                    </h3>
+
+                    <p>
+                        Learn technologies and concepts
+                        used in real software development.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Expert Training
+                    </h3>
+
+                    <p>
+                        Structured learning with experienced
+                        trainers and practical sessions.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Placement Support
+                    </h3>
+
+                    <p>
+                        Connect your learning journey with
+                        real placement opportunities.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section section-muted">
+
+        <div class="container text-center">
+
+            <h2>
+                Ready to Start Learning?
+            </h2>
+
+            <p>
+                Explore our courses and start building
+                your career today.
+            </p>
+
+            <a
+                    href="courses.html"
+                    class="btn btn-primary"
+            >
+                Browse Courses
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="container">
+
+        <p>
+            © 2026 TechEdge Institute. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+
+<script>
+
+    const loginLink =
+        document.getElementById("loginLink");
+
+    const logoutBtn =
+        document.getElementById("logoutBtn");
+
+    if (isLoggedIn()) {
+
+        loginLink.style.display = "none";
+
+        logoutBtn.style.display = "inline-block";
+
+    }
+
+</script>
+
+</body>
+
+</html>

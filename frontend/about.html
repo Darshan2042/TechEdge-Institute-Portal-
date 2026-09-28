@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>About - TechEdge Institute</title>
+
+    <link
+            rel="stylesheet"
+            href="css/style.css"
+    >
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="container nav-content">
+
+        <a href="index.html" class="logo">
+            TechEdge
+        </a>
+
+        <nav>
+
+            <a href="index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="offers.html">Offers</a>
+            <a href="placements.html">Placements</a>
+            <a href="about.html">About</a>
+
+            <a
+                    href="login.html"
+                    id="loginLink"
+            >
+                Login
+            </a>
+
+            <button
+                    id="logoutBtn"
+                    class="btn btn-outline"
+                    style="display:none"
+                    onclick="logout()"
+            >
+                Logout
+            </button>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="hero">
+
+        <div class="container hero-content">
+
+        <span class="badge">
+            About TechEdge
+        </span>
+
+            <h1>
+                Learn Skills.
+                Build Careers.
+            </h1>
+
+            <p>
+                TechEdge Institute provides practical,
+                industry-focused learning designed to help
+                students develop technical skills and prepare
+                for career opportunities.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-header">
+
+            <span class="badge">
+                What We Offer
+            </span>
+
+                <h2>
+                    A Practical Learning Journey
+                </h2>
+
+            </div>
+
+
+            <div class="card-grid">
+
+                <div class="card">
+
+                    <h3>
+                        Technical Training
+                    </h3>
+
+                    <p>
+                        Build practical knowledge through
+                        structured technical courses.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Career Preparation
+                    </h3>
+
+                    <p>
+                        Develop the skills needed for
+                        interviews and professional growth.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Placement Opportunities
+                    </h3>
+
+                    <p>
+                        Connect learning outcomes with
+                        real-world placement opportunities.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="container">
+
+        <p>
+            © 2026 TechEdge Institute. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="js/auth.js"></script>
+
+<script>
+
+    const loginLink =
+        document.getElementById("loginLink");
+
+    const logoutBtn =
+        document.getElementById("logoutBtn");
+
+    if (isLoggedIn()) {
+
+        loginLink.style.display = "none";
+
+        logoutBtn.style.display =
+            "inline-block";
+    }
+
+</script>
+
+</body>
+
+</html>

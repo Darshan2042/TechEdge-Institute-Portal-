@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Exams - TechEdge Institute</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="container nav-content">
+
+        <a href="admin.html" class="logo">
+            TechEdge Admin
+        </a>
+
+        <nav>
+            <a href="admin.html">Dashboard</a>
+            <a href="admin-enrollments.html">Enrollments</a>
+            <a href="admin-exams.html">Exams</a>
+
+            <button
+                    type="button"
+                    class="btn btn-outline"
+                    onclick="logout()">
+                Logout
+            </button>
+        </nav>
+
+    </div>
+</header>
+
+
+<main>
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <p>Administration</p>
+
+                <h1>Manage Exams</h1>
+
+                <p>
+                    Create exams and add questions with four options.
+                </p>
+
+            </div>
+
+
+            <!-- Error -->
+
+            <div
+                    id="errorMessage"
+                    class="error-message"
+                    style="display:none;">
+            </div>
+
+
+            <!-- Success -->
+
+            <div
+                    id="successMessage"
+                    class="success-message"
+                    style="display:none;">
+            </div>
+
+
+            <!-- Create Exam -->
+
+            <div class="card">
+
+                <h2>Create New Exam</h2>
+
+                <p style="margin-bottom:25px;">
+                    Create an exam for one of the available courses.
+                </p>
+
+
+                <form id="examForm">
+
+                    <div class="form-group">
+
+                        <label for="courseId">
+                            Course
+                        </label>
+
+                        <select
+                                id="courseId"
+                                required
+                                style="width:100%; padding:12px; border:1px solid #d1d5db; border-radius:8px; font-size:15px;">
+                            <option value="">
+                                Select Course
+                            </option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="title">
+                            Exam Title
+                        </label>
+
+                        <input
+                                type="text"
+                                id="title"
+                                placeholder="Core Java Assessment"
+                                required>
+
+                    </div>
+
+
+                    <div class="detail-grid">
+
+                        <div class="form-group">
+
+                            <label for="durationMinutes">
+                                Duration (Minutes)
+                            </label>
+
+                            <input
+                                    type="number"
+                                    id="durationMinutes"
+                                    min="1"
+                                    placeholder="30"
+                                    required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="totalMarks">
+                                Total Marks
+                            </label>
+
+                            <input
+                                    type="number"
+                                    id="totalMarks"
+                                    min="1"
+                                    placeholder="20"
+                                    required>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="passingMarks">
+                            Passing Marks
+                        </label>
+
+                        <input
+                                type="number"
+                                id="passingMarks"
+                                min="1"
+                                placeholder="10"
+                                required>
+
+                    </div>
+
+
+                    <button
+                            type="submit"
+                            class="btn btn-primary">
+                        Create Exam
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- Exams -->
+
+            <div class="detail-section">
+
+                <div class="section-header">
+
+                    <h2>Existing Exams</h2>
+
+                    <p>
+                        Select an exam to add questions.
+                    </p>
+
+                </div>
+
+
+                <div
+                        id="loading"
+                        class="card text-center">
+
+                    <p>Loading exams...</p>
+
+                </div>
+
+
+                <div
+                        id="examList"
+                        class="card-grid"
+                        style="display:none;">
+                </div>
+
+            </div>
+
+
+            <!-- Add Question -->
+
+            <div
+                    id="questionSection"
+                    class="detail-section"
+                    style="display:none;">
+
+                <div class="section-header">
+
+                    <p id="selectedExamName">
+                        Selected Exam
+                    </p>
+
+                    <h2>Add Question</h2>
+
+                    <p>
+                        Add exactly four options and select exactly one correct answer.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <form id="questionForm">
+
+
+                        <div class="form-group">
+
+                            <label for="questionText">
+                                Question
+                            </label>
+
+                            <textarea
+                                    id="questionText"
+                                    rows="4"
+                                    placeholder="Which keyword prevents a class from being subclassed?"
+                                    required
+                                    style="width:100%; padding:12px; border:1px solid #d1d5db; border-radius:8px; font-size:15px; resize:vertical;"></textarea>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="questionMarks">
+                                Marks
+                            </label>
+
+                            <input
+                                    type="number"
+                                    id="questionMarks"
+                                    min="1"
+                                    value="1"
+                                    required>
+
+                        </div>
+
+
+                        <h3 style="margin:25px 0 15px;">
+                            Options
+                        </h3>
+
+
+                        <!-- Option 1 -->
+
+                        <div class="form-group">
+
+                            <label>Option 1</label>
+
+                            <div style="display:flex; gap:10px; align-items:center;">
+
+                                <input
+                                        type="text"
+                                        id="option1"
+                                        placeholder="static"
+                                        required
+                                        style="flex:1;">
+
+                                <label style="margin:0; font-weight:normal;">
+                                    <input
+                                            type="radio"
+                                            name="correctOption"
+                                            value="0"
+                                            required>
+                                    Correct
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Option 2 -->
+
+                        <div class="form-group">
+
+                            <label>Option 2</label>
+
+                            <div style="display:flex; gap:10px; align-items:center;">
+
+                                <input
+                                        type="text"
+                                        id="option2"
+                                        placeholder="final"
+                                        required
+                                        style="flex:1;">
+
+                                <label style="margin:0; font-weight:normal;">
+                                    <input
+                                            type="radio"
+                                            name="correctOption"
+                                            value="1">
+                                    Correct
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Option 3 -->
+
+                        <div class="form-group">
+
+                            <label>Option 3</label>
+
+                            <div style="display:flex; gap:10px; align-items:center;">
+
+                                <input
+                                        type="text"
+                                        id="option3"
+                                        placeholder="sealed"
+                                        required
+                                        style="flex:1;">
+
+                                <label style="margin:0; font-weight:normal;">
+                                    <input
+                                            type="radio"
+                                            name="correctOption"
+                                            value="2">
+                                    Correct
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Option 4 -->
+
+                        <div class="form-group">
+
+                            <label>Option 4</label>
+
+                            <div style="display:flex; gap:10px; align-items:center;">
+
+                                <input
+                                        type="text"
+                                        id="option4"
+                                        placeholder="private"
+                                        required
+                                        style="flex:1;">
+
+                                <label style="margin:0; font-weight:normal;">
+                                    <input
+                                            type="radio"
+                                            name="correctOption"
+                                            value="3">
+                                    Correct
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                                type="submit"
+                                class="btn btn-primary">
+                            Add Question
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="container text-center">
+
+        <p>
+            © 2026 TechEdge Institute.
+            All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/admin-exams.js"></script>
+
+</body>
+
+</html>

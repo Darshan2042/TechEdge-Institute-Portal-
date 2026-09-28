@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Course Details - TechEdge</title>
+
+    <link
+            rel="stylesheet"
+            href="css/style.css"
+    >
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="container nav-content">
+
+        <a href="index.html" class="logo">
+            TechEdge
+        </a>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="courses.html">
+                Courses
+            </a>
+
+            <a href="offers.html">
+                Offers
+            </a>
+
+            <a href="placements.html">
+                Placements
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a
+                    href="login.html"
+                    id="loginLink"
+            >
+                Login
+            </a>
+
+            <button
+                    id="logoutBtn"
+                    class="btn btn-outline"
+                    style="display:none"
+                    onclick="logout()"
+            >
+                Logout
+            </button>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="section">
+
+        <div class="container">
+
+            <div id="loading">
+                Loading course...
+            </div>
+
+
+            <div
+                    id="errorMessage"
+                    class="error-message"
+                    style="display:none"
+            ></div>
+
+
+            <div
+                    id="courseDetail"
+                    style="display:none"
+            >
+
+                <!-- Course Header -->
+
+                <div class="course-detail-header">
+
+                    <span
+                            id="courseCategory"
+                            class="badge"
+                    ></span>
+
+                    <h1 id="courseTitle"></h1>
+
+                    <p
+                            id="courseDescription"
+                            class="course-description"
+                    ></p>
+
+                </div>
+
+
+                <!-- Course Information -->
+
+                <div class="detail-grid">
+
+                    <div class="card">
+
+                        <h3>
+                            Course Information
+                        </h3>
+
+                        <p>
+                            <strong>Code:</strong>
+                            <span id="courseCode"></span>
+                        </p>
+
+                        <p>
+                            <strong>Level:</strong>
+                            <span id="courseLevel"></span>
+                        </p>
+
+                        <p>
+                            <strong>Duration:</strong>
+                            <span id="courseDuration"></span>
+                            weeks
+                        </p>
+
+                        <p>
+                            <strong>Fee:</strong>
+                            ₹<span id="courseFee"></span>
+                        </p>
+
+                        <p id="offerRow">
+                            <strong>Offer:</strong>
+                            <span id="courseOffer"></span>
+                        </p>
+
+                    </div>
+
+
+                    <!-- Topics -->
+
+                    <div class="card">
+
+                        <h3>
+                            Course Topics
+                        </h3>
+
+                        <ul
+                                id="topicList"
+                                class="topic-list"
+                        ></ul>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Batches -->
+
+                <section class="detail-section">
+
+                    <div class="section-header">
+
+                        <span class="badge">
+                            Available Batches
+                        </span>
+
+                        <h2>
+                            Upcoming Batches
+                        </h2>
+
+                    </div>
+
+                    <div
+                            id="batchContainer"
+                            class="card-grid"
+                    ></div>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="container">
+
+        <p>
+            © 2026 TechEdge Institute. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/course-detail.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Manage Courses - TechEdge Institute</title>
+
+    <link
+            rel="stylesheet"
+            href="css/style.css"
+    >
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="container nav-content">
+
+        <a href="admin.html" class="logo">
+            TechEdge Admin
+        </a>
+
+        <nav>
+
+            <a href="admin.html">
+                Dashboard
+            </a>
+
+            <a href="admin-courses.html">
+                Courses
+            </a>
+
+            <a href="admin-enrollments.html">
+                Enrollments
+            </a>
+
+            <a href="admin-exams.html">
+                Exams
+            </a>
+
+            <a href="admin-feedback.html">
+                Feedback
+            </a>
+
+            <button
+                    type="button"
+                    class="btn btn-outline"
+                    onclick="logout()"
+            >
+                Logout
+            </button>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="section">
+
+        <div class="container">
+
+            <!-- PAGE HEADER -->
+
+            <div class="section-header">
+
+                <p>
+                    Administration
+                </p>
+
+                <h1>
+                    Course & Batch Management
+                </h1>
+
+                <p>
+                    Create and manage courses and training batches.
+                </p>
+
+            </div>
+
+
+            <!-- ERROR -->
+
+            <div
+                    id="errorMessage"
+                    class="error-message"
+                    style="display:none;"
+            >
+            </div>
+
+
+            <!-- SUCCESS -->
+
+            <div
+                    id="successMessage"
+                    class="success-message"
+                    style="display:none;"
+            >
+            </div>
+
+
+            <!-- ========================= -->
+            <!-- COURSE FORM -->
+            <!-- ========================= -->
+
+            <div class="card">
+
+                <h2 id="courseFormTitle">
+                    Create Course
+                </h2>
+
+                <form id="courseForm">
+
+                    <input
+                            type="hidden"
+                            id="courseId"
+                    >
+
+                    <div class="detail-grid">
+
+                        <div class="form-group">
+
+                            <label for="courseCode">
+                                Course Code
+                            </label>
+
+                            <input
+                                    type="text"
+                                    id="courseCode"
+                                    placeholder="JAVA-FS"
+                                    required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="courseTitle">
+                                Course Title
+                            </label>
+
+                            <input
+                                    type="text"
+                                    id="courseTitle"
+                                    placeholder="Java Full Stack Development"
+                                    required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="courseCategory">
+                                Category
+                            </label>
+
+                            <select
+                                    id="courseCategory"
+                                    required
+                            >
+
+                                <option value="">
+                                    Select Category
+                                </option>
+
+                                <option value="TECHNICAL">
+                                    Technical
+                                </option>
+
+                                <option value="APTITUDE">
+                                    Aptitude
+                                </option>
+
+                                <option value="COMMUNICATION">
+                                    Communication
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="courseLevel">
+                                Level
+                            </label>
+
+                            <select
+                                    id="courseLevel"
+                                    required
+                            >
+
+                                <option value="">
+                                    Select Level
+                                </option>
+
+                                <option value="BEGINNER">
+                                    Beginner
+                                </option>
+
+                                <option value="INTERMEDIATE">
+                                    Intermediate
+                                </option>
+
+                                <option value="ADVANCED">
+                                    Advanced
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="durationWeeks">
+                                Duration (Weeks)
+                            </label>
+
+                            <input
+                                    type="number"
+                                    id="durationWeeks"
+                                    min="1"
+                                    required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="courseFee">
+                                Fee
+                            </label>
+
+                            <input
+                                    type="number"
+                                    id="courseFee"
+                                    min="0"
+                                    step="0.01"
+                                    required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="courseDescription">
+                            Description
+                        </label>
+
+                        <textarea
+                                id="courseDescription"
+                                rows="5"
+                                placeholder="Course description..."
+                                required
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+
+                            <input
+                                    type="checkbox"
+                                    id="courseActive"
+                                    checked
+                            >
+
+                            Active Course
+
+                        </label>
+
+                    </div>
+
+
+                    <button
+                            type="submit"
+                            class="btn btn-primary"
+                            id="courseSubmitButton"
+                    >
+                        Create Course
+                    </button>
+
+
+                    <button
+                            type="button"
+                            class="btn btn-secondary"
+                            id="courseCancelButton"
+                            style="display:none;"
+                    >
+                        Cancel
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- ========================= -->
+            <!-- COURSES LIST -->
+            <!-- ========================= -->
+
+            <div class="detail-section">
+
+                <div class="section-header">
+
+                    <h2>
+                        Existing Courses
+                    </h2>
+
+                </div>
+
+
+                <div id="coursesLoading" class="card text-center">
+
+                    <p>
+                        Loading courses...
+                    </p>
+
+                </div>
+
+
+                <div
+                        id="coursesContainer"
+                        class="card-grid"
+                        style="display:none;"
+                >
+                </div>
+
+
+                <div
+                        id="coursesEmpty"
+                        class="card text-center"
+                        style="display:none;"
+                >
+
+                    <p>
+                        No courses found.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================= -->
+            <!-- BATCH FORM -->
+            <!-- ========================= -->
+
+            <div class="detail-section">
+
+                <div class="card">
+
+                    <h2 id="batchFormTitle">
+                        Create Batch
+                    </h2>
+
+                    <form id="batchForm">
+
+                        <input
+                                type="hidden"
+                                id="batchId"
+                        >
+
+
+                        <div class="detail-grid">
+
+                            <div class="form-group">
+
+                                <label for="batchCourse">
+                                    Course
+                                </label>
+
+                                <select
+                                        id="batchCourse"
+                                        required
+                                >
+
+                                    <option value="">
+                                        Select Course
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="batchCode">
+                                    Batch Code
+                                </label>
+
+                                <input
+                                        type="text"
+                                        id="batchCode"
+                                        placeholder="JAVA-FS-2026-M"
+                                        required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="startDate">
+                                    Start Date
+                                </label>
+
+                                <input
+                                        type="date"
+                                        id="startDate"
+                                        required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="endDate">
+                                    End Date
+                                </label>
+
+                                <input
+                                        type="date"
+                                        id="endDate"
+                                        required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="timing">
+                                    Timing
+                                </label>
+
+                                <input
+                                        type="text"
+                                        id="timing"
+                                        placeholder="09:00-11:00"
+                                        required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="batchMode">
+                                    Mode
+                                </label>
+
+                                <select
+                                        id="batchMode"
+                                        required
+                                >
+
+                                    <option value="">
+                                        Select Mode
+                                    </option>
+
+                                    <option value="ONLINE">
+                                        Online
+                                    </option>
+
+                                    <option value="OFFLINE">
+                                        Offline
+                                    </option>
+
+                                    <option value="HYBRID">
+                                        Hybrid
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="trainerName">
+                                    Trainer Name
+                                </label>
+
+                                <input
+                                        type="text"
+                                        id="trainerName"
+                                        placeholder="Mahesh Jadhav"
+                                        required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="totalSeats">
+                                    Total Seats
+                                </label>
+
+                                <input
+                                        type="number"
+                                        id="totalSeats"
+                                        min="1"
+                                        required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="batchStatus">
+                                Status
+                            </label>
+
+                            <select
+                                    id="batchStatus"
+                                    required
+                            >
+
+                                <option value="UPCOMING">
+                                    Upcoming
+                                </option>
+
+                                <option value="ONGOING">
+                                    Ongoing
+                                </option>
+
+                                <option value="COMPLETED">
+                                    Completed
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <button
+                                type="submit"
+                                class="btn btn-primary"
+                                id="batchSubmitButton"
+                        >
+                            Create Batch
+                        </button>
+
+
+                        <button
+                                type="button"
+                                class="btn btn-secondary"
+                                id="batchCancelButton"
+                                style="display:none;"
+                        >
+                            Cancel
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================= -->
+            <!-- BATCHES LIST -->
+            <!-- ========================= -->
+
+            <div class="detail-section">
+
+                <div class="section-header">
+
+                    <h2>
+                        Existing Batches
+                    </h2>
+
+                </div>
+
+
+                <div id="batchesLoading" class="card text-center">
+
+                    <p>
+                        Loading batches...
+                    </p>
+
+                </div>
+
+
+                <div
+                        id="batchesContainer"
+                        style="display:none;"
+                >
+                </div>
+
+
+                <div
+                        id="batchesEmpty"
+                        class="card text-center"
+                        style="display:none;"
+                >
+
+                    <p>
+                        No batches found.
+                    </p>
+
+                </div>
+
+            </div>
+            <!-- ========================= -->
+            <!-- OFFER FORM -->
+            <!-- ========================= -->
+
+            <div class="detail-section">
+
+                <div class="card">
+
+                    <h2 id="offerFormTitle">
+                        Create Offer
+                    </h2>
+
+                    <form id="offerForm">
+
+                        <div class="detail-grid">
+
+                            <div class="form-group">
+
+                                <label for="offerTitle">
+                                    Offer Title
+                                </label>
+
+                                <input
+                                        type="text"
+                                        id="offerTitle"
+                                        placeholder="Diwali Special"
+                                        required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="couponCode">
+                                    Coupon Code
+                                </label>
+
+                                <input
+                                        type="text"
+                                        id="couponCode"
+                                        placeholder="DIWALI20"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="discountPercent">
+                                    Discount (%)
+                                </label>
+
+                                <input
+                                        type="number"
+                                        id="discountPercent"
+                                        min="0.01"
+                                        max="100"
+                                        step="0.01"
+                                        required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="validFrom">
+                                    Valid From
+                                </label>
+
+                                <input
+                                        type="date"
+                                        id="validFrom"
+                                        required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="validTo">
+                                    Valid To
+                                </label>
+
+                                <input
+                                        type="date"
+                                        id="validTo"
+                                        required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="offerDescription">
+                                Description
+                            </label>
+
+                            <textarea
+                                    id="offerDescription"
+                                    rows="4"
+                                    placeholder="Offer description..."
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+
+                                <input
+                                        type="checkbox"
+                                        id="offerActive"
+                                        checked
+                                >
+
+                                Active Offer
+
+                            </label>
+
+                        </div>
+
+
+                        <button
+                                type="submit"
+                                class="btn btn-primary"
+                                id="offerSubmitButton"
+                        >
+                            Create Offer
+                        </button>
+
+
+                        <button
+                                type="button"
+                                class="btn btn-secondary"
+                                id="offerCancelButton"
+                                style="display:none;"
+                        >
+                            Cancel
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================= -->
+            <!-- OFFERS LIST -->
+            <!-- ========================= -->
+
+            <div class="detail-section">
+
+                <div class="section-header">
+
+                    <h2>
+                        All Offers
+                    </h2>
+
+                    <p>
+                        Manage active and expired offers.
+                    </p>
+
+                </div>
+
+
+                <div
+                        id="offersLoading"
+                        class="card text-center"
+                >
+
+                    <p>
+                        Loading offers...
+                    </p>
+
+                </div>
+
+
+                <div
+                        id="offersContainer"
+                        class="card-grid"
+                        style="display:none;"
+                >
+                </div>
+
+
+                <div
+                        id="offersEmpty"
+                        class="card text-center"
+                        style="display:none;"
+                >
+
+                    <p>
+                        No offers found.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================= -->
+            <!-- LINK OFFER TO COURSE -->
+            <!-- ========================= -->
+
+            <div class="detail-section">
+
+                <div class="card">
+
+                    <h2>
+                        Link Offer to Course
+                    </h2>
+
+                    <p>
+                        Attach an existing offer to a course.
+                    </p>
+
+
+                    <form id="linkOfferForm">
+
+                        <div class="detail-grid">
+
+                            <div class="form-group">
+
+                                <label for="linkCourse">
+                                    Course
+                                </label>
+
+                                <select
+                                        id="linkCourse"
+                                        required
+                                >
+
+                                    <option value="">
+                                        Select Course
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="linkOffer">
+                                    Offer
+                                </label>
+
+                                <select
+                                        id="linkOffer"
+                                        required
+                                >
+
+                                    <option value="">
+                                        Select Offer
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                                type="submit"
+                                class="btn btn-primary"
+                        >
+                            Link Offer
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="container text-center">
+
+        <p>
+            © 2026 TechEdge Institute.
+            All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/admin-courses.js"></script>
+
+</body>
+
+</html>

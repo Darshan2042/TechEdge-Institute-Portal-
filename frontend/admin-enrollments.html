@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Manage Enrollments - TechEdge</title>
+
+    <link
+            rel="stylesheet"
+            href="css/style.css"
+    >
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="container nav-content">
+
+        <a href="admin.html" class="logo">
+            TechEdge Admin
+        </a>
+
+        <nav>
+
+            <a href="admin.html">
+                Dashboard
+            </a>
+
+            <a href="admin-enrollments.html">
+                Enrollments
+            </a>
+
+            <a href="admin-exams.html">
+                Exams
+            </a>
+
+            <button
+                    type="button"
+                    class="btn btn-outline"
+                    onclick="logout()"
+            >
+                Logout
+            </button>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="section">
+
+        <div class="container">
+
+            <!-- Header -->
+
+            <div class="section-header">
+
+                <p>
+                    Administration
+                </p>
+
+                <h1>
+                    Enrollment Management
+                </h1>
+
+                <p>
+                    Review student applications and manage
+                    enrollment status.
+                </p>
+
+            </div>
+
+
+            <!-- Filter -->
+
+            <div class="filters">
+
+                <select id="statusFilter">
+
+                    <option value="">
+                        All Statuses
+                    </option>
+
+                    <option value="APPLIED">
+                        Applied
+                    </option>
+
+                    <option value="APPROVED">
+                        Approved
+                    </option>
+
+                    <option value="ACTIVE">
+                        Active
+                    </option>
+
+                    <option value="COMPLETED">
+                        Completed
+                    </option>
+
+                    <option value="REJECTED">
+                        Rejected
+                    </option>
+
+                    <option value="DROPPED">
+                        Dropped
+                    </option>
+
+                </select>
+
+
+                <button
+                        type="button"
+                        class="btn btn-primary"
+                        onclick="loadEnrollments()"
+                >
+                    Apply Filter
+                </button>
+
+            </div>
+
+
+            <!-- Loading -->
+
+            <div
+                    id="loading"
+                    class="card text-center"
+            >
+                <p>
+                    Loading enrollments...
+                </p>
+            </div>
+
+
+            <!-- Error -->
+
+            <div
+                    id="errorMessage"
+                    class="error-message"
+                    style="display:none;"
+            >
+            </div>
+
+
+            <!-- Success -->
+
+            <div
+                    id="successMessage"
+                    class="success-message"
+                    style="display:none;"
+            >
+            </div>
+
+
+            <!-- Table -->
+
+            <div
+                    id="enrollmentContainer"
+                    style="display:none;"
+            >
+
+                <div class="table-wrapper">
+
+                    <table class="admin-table">
+
+                        <thead>
+
+                        <tr>
+
+                            <th>
+                                ID
+                            </th>
+
+                            <th>
+                                Student
+                            </th>
+
+                            <th>
+                                Course
+                            </th>
+
+                            <th>
+                                Batch
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Applied At
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                        </thead>
+
+                        <tbody id="enrollmentTableBody">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- Empty -->
+
+                <div
+                        id="emptyMessage"
+                        class="card text-center"
+                        style="display:none;"
+                >
+
+                    <h3>
+                        No enrollments found
+                    </h3>
+
+                    <p>
+                        There are no enrollments matching
+                        the selected filter.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="container text-center">
+
+        <p>
+            © 2026 TechEdge Institute.
+            All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="js/config.js"></script>
+
+<script src="js/api.js"></script>
+
+<script src="js/auth.js"></script>
+
+<script src="js/admin-enrollments.js"></script>
+
+</body>
+
+</html>

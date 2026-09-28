@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Online Exam - TechEdge</title>
+
+    <link
+            rel="stylesheet"
+            href="css/style.css"
+    >
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="container nav-content">
+
+        <a href="dashboard.html" class="logo">
+            TechEdge
+        </a>
+
+        <nav>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="my-enrollments.html">
+                My Enrollments
+            </a>
+
+            <button
+                    type="button"
+                    class="btn btn-outline"
+                    onclick="logout()"
+            >
+                Logout
+            </button>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="section">
+
+        <div class="container">
+
+            <!-- Loading -->
+
+            <div
+                    id="loading"
+                    class="card text-center"
+            >
+                <p>Loading exam...</p>
+            </div>
+
+
+            <!-- Error -->
+
+            <div
+                    id="errorMessage"
+                    class="error-message"
+                    style="display: none;"
+            ></div>
+
+
+            <!-- Exam -->
+
+            <div
+                    id="examContainer"
+                    style="display: none;"
+            >
+
+                <!-- Exam Header -->
+
+                <div class="exam-header">
+
+                    <div>
+
+                        <span class="badge">
+                            Online Exam
+                        </span>
+
+                        <h1 id="examTitle">
+                            Online Exam
+                        </h1>
+
+                    </div>
+
+
+                    <!-- Timer -->
+
+                    <div class="timer-card">
+
+                        <span>
+                            Time Remaining
+                        </span>
+
+                        <strong id="timer">
+                            --:--
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Exam Information -->
+
+                <div class="card">
+
+                    <p>
+                        <strong>Total Marks:</strong>
+                        <span id="totalMarks">-</span>
+                    </p>
+
+                    <p>
+                        <strong>Duration:</strong>
+                        <span id="examDuration">-</span> minutes
+                    </p>
+
+                    <p
+                            id="autosaveStatus"
+                            style="
+                                margin-top: 10px;
+                                color: #64748b;
+                                font-size: 13px;
+                            "
+                    >
+                        Answers are saved automatically.
+                    </p>
+
+                </div>
+
+
+                <!-- Questions -->
+
+                <form id="examForm">
+
+                    <div
+                            id="questionsContainer"
+                            class="exam-questions"
+                    >
+                    </div>
+
+
+                    <!-- Submit -->
+
+                    <div
+                            style="
+                                margin-top: 30px;
+                                text-align: center;
+                            "
+                    >
+
+                        <button
+                                type="submit"
+                                id="submitButton"
+                                class="btn btn-primary"
+                        >
+                            Submit Exam
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="container text-center">
+
+        <p>
+            © 2026 TechEdge Institute.
+            All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- JavaScript -->
+
+<script src="js/config.js"></script>
+
+<script src="js/api.js"></script>
+
+<script src="js/auth.js"></script>
+
+<script src="js/exam.js"></script>
+
+</body>
+
+</html>
